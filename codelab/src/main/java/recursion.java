@@ -27,8 +27,8 @@ public class recursion {
         System.out.println(sum(823));
         
         
-        int [] arr = {4,67,6,64};
-        System.out.println(binarysearch(arr, 6, 0, 4));
+        int [] arr = {4,6,8,9,61,64,78};
+        System.out.println("found number at index: " + binarysearch(arr, 61, 0, arr.length-1 ));
     }
     
     public static void recursive(int n){
