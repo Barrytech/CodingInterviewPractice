@@ -14,7 +14,7 @@ public class recursion {
         
         DecendingCount(5);
         
-        System.out.println(fact(5));
+        System.out.println("factorial is: " +  fact(10));
         
         System.out.println(fingers(2));
         
@@ -29,8 +29,36 @@ public class recursion {
         
         int [] arr = {4,6,8,9,61,64,78};
         System.out.println("found number at index: " + binarysearch(arr, 61, 0, arr.length-1 ));
+        
+        
+            int[] arrayA = {23,47,83,98,958};
+            int[] arrayB = {54,58,65,71,81};
+            int[] arrayC = new int[10];
+            
+            System.out.println("This is arrayA: ");
+            for(int i = 0; i < arrayA.length; i++){
+                System.out.print(arrayA[i] + " ");
+            }
+            System.out.println("");
+            System.out.println("");
+            System.out.println("This is arrayB: ");
+            for(int i = 0; i < arrayB.length; i++){
+                System.out.print(arrayB[i] + " ");
+            }
+            merge(arrayA, 5, arrayB, 5, arrayC);
+            System.out.println("");
+            System.out.println("");
+            display(arrayC, 10);
     }
     
+    //Here ends the main method
+    ///////////////////////////////////////////////////
+    //////////////////////////////////////////////////
+    /////////////////////////////////////////////////
+    ////////////////////////////////////////////////
+    
+    
+    //simple recursive printing algo
     public static void recursive(int n){
         
         if( n == 0){
@@ -42,18 +70,21 @@ public class recursion {
                 }
         
     }
+    
+    //counting using recursion
     public static void DecendingCount(int n){
         
         if( n == 0){
             System.out.println("Done counting");
         }else{
-                System.out.println(n);
-                n--;
-                DecendingCount(n);
+             System.out.println(n);
+             n--;
+             DecendingCount(n);
          }    
     }
     
- 
+    
+    //factorial using recursion
     public static int fact(int n){
         if(n==1){
             System.out.println("factorial(" + n + ") = 1");
@@ -63,6 +94,8 @@ public class recursion {
             return n*fact(n-1);
         }
     }
+    
+    
     //count number of fingers people have
     public static int fingers(int people){
         if(people == 1){
@@ -73,8 +106,7 @@ public class recursion {
         }
     }
     
-    //return power
-    
+    //return power of a number using recursion 
     public static int power(int base, int num){
         if(num == 1 || num == 0){
             return base;
@@ -95,14 +127,7 @@ public class recursion {
         }
     }
     
-    
-//    public static int sumArray(int[] arr, int size, int index){
-//        if( index == 0){
-//            return arr[0];
-//        }else{
-//            return sumArray(arr[index]) + sumArray(arr[index+1]);
-//        }
-//    }
+
     
     // add the values of given set
     public static int sum(int num){
@@ -129,6 +154,37 @@ public class recursion {
             return -1;
         }
     }
+    
+    // Merging two arrays using recursion
+            public static void merge( int[] arrayA, int sizeA, int[] arrayB, int sizeB, int[] arrayC){
+            int aDex = 0;
+            int bDex = 0;
+            int cDex = 0;
+            
+//            int sizeA = arrayA.length;
+//            int sizeB = arrayB.length;
+            while(aDex <sizeA && bDex < sizeB){
+                if( arrayA[aDex] < arrayB[bDex]){
+                    arrayC[cDex++] = arrayA[aDex++];
+                }else{
+                    arrayC[cDex++] = arrayB[bDex++];
+                }
+            }
+            while( aDex < sizeA){
+                arrayC[cDex++] = arrayA[aDex++];
+            }
+            while( aDex < sizeB){
+                arrayC[cDex++] = arrayB[bDex++];
+            }
+        }
+            //display the final array
+        public static void display(int[] theArray, int size){
+            System.out.println("Here is arrayC :");
+            for( int i = 0; i < size; i++){
+                System.out.print( theArray[i] + " ");
+            }
+            System.out.println(" ");
+        }
     
     
     
