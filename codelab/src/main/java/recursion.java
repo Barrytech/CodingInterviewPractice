@@ -70,6 +70,12 @@ public class recursion {
             String[] test = {"b", "k", "l"};
             
             merger(act, test);
+            
+            //testing string unik checking
+            System.out.println("is this unik" + isCharUniq("insp_elmt"));
+            
+            //testing permutation:
+            System.out.println(arePermutated("Abdoul", "luodA"));
     }
     
     //Here ends the main method
@@ -265,6 +271,41 @@ public class recursion {
             }       //end for
             return change;
         }       // end method
+        
+        
+        //check if string has repeating character. NB: without using additional data structures
+        public static boolean isCharUniq(String s){
+            int size = s.length();
+            String space = "";
+            if( size > 256){
+                return false;
+            }
+            boolean[] setOfChar = new boolean[128];
+            for( int i = 0; i < size; i++){
+                int val = s.charAt(i);
+                if( setOfChar[val]){    //means detected a repetition. this include an empty space
+                    return false;
+                }
+                setOfChar[val] = true;
+            }    
+            return true;
+        }
+        
+        
+        //Check if two strings are permutation of one another:
+        public static String sort(String s){
+            char[] content = s.toCharArray();
+            java.util.Arrays.sort(content);
+            return new String(content);
+            }
+        public static boolean arePermutated(String s, String c){
+
+            if( s.length() != c.length()){
+                return false;
+            }
+            return sort(s).equals(sort(c));
+            
+        }
     
     
  
