@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.lang.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -75,7 +76,14 @@ public class recursion {
             System.out.println("is this unik" + isCharUniq("insp_elmt"));
             
             //testing permutation:
-            System.out.println(arePermutated("Abdoul", "luodA"));
+            System.out.println(arePermutated("Abdoul", "luodbA"));
+            
+            
+            //filling spaces:
+//            String[] trial = {"I love Google"};
+//            char[] text = trial.toCharArray();
+//            int siz = trial.length;
+//            System.out.println(replacesSpaces(text, siz));
     }
     
     //Here ends the main method
@@ -303,8 +311,37 @@ public class recursion {
             if( s.length() != c.length()){
                 return false;
             }
-            return sort(s).equals(sort(c));
+            return sort(s).equals(sort(c));     
+        }
+        
+        //replaces space in given string with something:
+        public static void replacesSpaces(char[] string, int length){
+            int spaces = charCount(string, 0, length, ' ');
+            int newIndex = length-1+spaces*2;
             
+            if( newIndex+1 < string.length){
+                string[newIndex+1] = '\0';
+            }
+            for( int oldIndex = length-1; oldIndex >= 0; oldIndex -= 1){
+                if( string[oldIndex] == ' '){
+                    string[newIndex] = '\0';
+                    string[newIndex-1] = '2';
+                    string [newIndex-2] = '%';
+                    newIndex -= 3;
+                }else{
+                    string[newIndex] = string[oldIndex];
+                    newIndex -= 1;
+                }
+            }
+        }
+        public static int charCount( char[] string, int start, int end, int target){
+            int count = 0;
+            for( int i = start; i < end; i++){
+                if( string[i] == target ){
+                    count ++;
+                }
+            }
+            return count;
         }
     
     
