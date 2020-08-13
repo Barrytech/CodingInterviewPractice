@@ -45,10 +45,22 @@ public class recursion {
             for(int i = 0; i < arrayB.length; i++){
                 System.out.print(arrayB[i] + " ");
             }
+            //calling merge method
             merge(arrayA, 5, arrayB, 5, arrayC);
             System.out.println("");
             System.out.println("");
             display(arrayC, 10);
+            
+            // calling palindrom method
+            
+            String[] palindrome = {"b","a","n","a","n","a"};
+            System.out.println("check palindrome: " + isPalindrom(palindrome));
+            
+            
+            //coin change algorith:
+            int [] coins ={50,25,10,5};
+            System.out.println("number of coins for " + chanz(20, coins));
+            
     }
     
     //Here ends the main method
@@ -106,6 +118,19 @@ public class recursion {
         }
     }
     
+    //return change
+    public static int chanz(int money, int[] coins){
+        int size = coins.length;
+        for(int i = size; i>0; i--){
+            if(money == coins[i]){
+                return i;
+            }else{
+                return money%coins[i] + chanz(money%coins[i-1], coins);
+            }
+        }
+        return -1;
+    }
+    
     //return power of a number using recursion 
     public static int power(int base, int num){
         if(num == 1 || num == 0){
@@ -156,19 +181,19 @@ public class recursion {
     }
     
     // Merging two arrays using recursion
-            public static void merge( int[] arrayA, int sizeA, int[] arrayB, int sizeB, int[] arrayC){
+        public static void merge( int[] arrayA, int sizeA, int[] arrayB, int sizeB, int[] arrayC){
             int aDex = 0;
             int bDex = 0;
-            int cDex = 0;
-            
+            int cDex = 0;           
 //            int sizeA = arrayA.length;
 //            int sizeB = arrayB.length;
-            while(aDex <sizeA && bDex < sizeB){
+            while(aDex <sizeA && bDex < sizeB){         //all arrays not empty
                 if( arrayA[aDex] < arrayB[bDex]){
                     arrayC[cDex++] = arrayA[aDex++];
                 }else{
                     arrayC[cDex++] = arrayB[bDex++];
                 }
+                
             }
             while( aDex < sizeA){
                 arrayC[cDex++] = arrayA[aDex++];
@@ -185,8 +210,43 @@ public class recursion {
             }
             System.out.println(" ");
         }
-    
-    
+        
+        
+        //check if string is palindrome:
+        public static boolean isPalindrom(String[] s){
+            int size = s.length;
+            for( int i = 0; i <= size; i++){
+                if( s[i] != s[size-1-i]){
+                    return false;
+                }
+                
+            }
+            return true;
+        }
+        
+
+        //coins number of coins:
+        public static int change(int val, int[] coins){  
+            int variables = coins.length;
+             int change = 0;
+            
+            for(int i = variables; i >= 0 ; i--){
+
+                while( val > coins[i]){
+                    if( val % coins[i] == 0){
+                        change = val/coins[i];
+                        System.out.println("number of coins needed is: " + change);
+                     }else if( val % coins[i] != 0){
+                            val = val % coins[i];
+                            change = val/coins[i] + val/coins[i-1];
+                     } 
+                    
+                   return change;     
+                }  //end while
+                return -1;               
+            }       //end for
+            return change;
+        }       // end method
     
     
  
