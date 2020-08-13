@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -58,9 +61,15 @@ public class recursion {
             
             
             //coin change algorith:
-            int [] coins ={50,25,10,5};
-            System.out.println("number of coins for " + chanz(20, coins));
+//            int [] coins ={50,25,10,5};
+//            System.out.println("number of coins for " + chanz(20, coins));
             
+            
+            String[] act = {"w","f"};
+            
+            String[] test = {"b", "k", "l"};
+            
+            merger(act, test);
     }
     
     //Here ends the main method
@@ -202,6 +211,17 @@ public class recursion {
                 arrayC[cDex++] = arrayB[bDex++];
             }
         }
+        
+        public static void merger(String[] words, String[] mots){
+            ArrayList<String> wordCloud = new ArrayList<>();
+            for( String a: words){
+                wordCloud.add(a);  
+            }
+            for(String b: mots){
+                wordCloud.add(b);
+            }
+            System.out.println(wordCloud);
+        }
             //display the final array
         public static void display(int[] theArray, int size){
             System.out.println("Here is arrayC :");
@@ -231,7 +251,6 @@ public class recursion {
              int change = 0;
             
             for(int i = variables; i >= 0 ; i--){
-
                 while( val > coins[i]){
                     if( val % coins[i] == 0){
                         change = val/coins[i];
@@ -239,8 +258,7 @@ public class recursion {
                      }else if( val % coins[i] != 0){
                             val = val % coins[i];
                             change = val/coins[i] + val/coins[i-1];
-                     } 
-                    
+                     }      
                    return change;     
                 }  //end while
                 return -1;               
