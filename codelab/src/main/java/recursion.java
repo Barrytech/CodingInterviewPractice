@@ -84,6 +84,12 @@ public class recursion {
 //            char[] text = trial.toCharArray();
 //            int siz = trial.length;
 //            System.out.println(replacesSpaces(text, siz));
+
+            int [] balance ={1,1,0,2};
+            System.out.println(equilibrium(balance));
+            
+            ///isRotation:
+            System.out.println("Test if it is rotation: " + isRotation("Coffee", "eeffoC"));
     }
     
     //Here ends the main method
@@ -345,6 +351,75 @@ public class recursion {
         }
     
     
- 
+        //this algorithm find the equilibruim index of a given array of integers.(SPS mock interview)
+        //Time complexity is O(n)
+        public static int equilibrium(int[] arr) {
+            int left = arr[0], right = 0;
+            for (int i = 2; i < arr.length; i++) {
+                right += arr[i];
+            }
+            for (int i = 1; i < arr.length - 1; i++) {
+                if (left == right)
+                        return i;
+                left += arr[i];
+                right -= arr[i+1];
+            }
+            return -1;
+        }
+  
+        
+        ///this algorithm check for permutated palindrome
+//        public static boolean isPalindromePermutated(String phrase) {
+//            int countOdd = 0;
+//            int[] table = new int[Character.getNumericValue('z') - Character.getNumericValue('a') + 1];
+//            for (char c : phrase.toCharArray()) {
+//                int x = getCharNumber(c);
+//                if (x != -1) {
+//                    table[x]++;
+//                    if (table[x] % 2 == 1){
+//                        countOdd++;
+//                    } else {
+//                        countOdd--;
+//                    }
+//                }
+//            }
+//            
+//            return countOdd <= 1;
+//        }
+        
+        
+        // String rotation:
+        public static boolean isRotation(String s1, String s2) {
+            int size = s1.length();
+            
+            if (size == s2.length() && size > 0) {
+                String s1s1 = s1 + s1;
+                return isSubstring(s1s1, s2);
+            }
+            return false;
+        }
+        public static boolean isSubstring(String s1, String s2){
+            if(s1.length()<s2.length()) return false;
+            if(s1.length()==s2.length()) return s1.equals(s2);
+            for(int i=0;i<=s1.length()-s2.length();i++){
+                if(s1.charAt(i)==s2.charAt(0)){
+                    int matchLength=1;
+                    for(int j=1;j<s2.length();j++){
+                        if(s1.charAt(i+j)!=s2.charAt(j)){
+                            break;
+                        }
+                        matchLength++;
+                    }
+                    if(matchLength==s2.length()) return true;
+                }
+            }
+            return false;
+        }
+//
+//        private static boolean isSubstring(String s1s1, String s2) {
+//            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        }
+      
+
     
 }
