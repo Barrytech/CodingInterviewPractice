@@ -73,10 +73,10 @@ public class recursion {
             merger(act, test);
             
             //testing string unik checking
-            System.out.println("is this unik" + isCharUniq("insp_elmt"));
+            System.out.println("is this unik: " + isCharUniq("insp_elmt"));
             
             //testing permutation:
-            System.out.println(arePermutated("Abdoul", "luodbA"));
+            System.out.println("Permutation is: " + arePermutated("Abdoul", "luodbA"));
             
             
             //filling spaces:
