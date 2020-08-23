@@ -90,6 +90,14 @@ public class recursion {
             
             ///isRotation:
             System.out.println("Test if it is rotation: " + isRotation("Coffee", "eeffoC"));
+            
+            System.out.println(ReverseString("Barry"));
+            
+            
+            int[] movers = {4,0,9,0,0,9,8,};
+            System.out.println(moveZeros(movers));
+            
+            System.out.println(reverseIntegers(2340));
     }
     
     //Here ends the main method
@@ -110,6 +118,42 @@ public class recursion {
                 recursive(n);
                 }
         
+    }
+    
+    
+ 
+    //reverse an integer
+    public static int reverseIntegers(int x) {
+        boolean negative = false;
+        if(x > 0) {
+            negative = true;
+            x *= -1;
+        }
+        long reversed = 0;
+        while(x > 0) {
+            reversed = (reversed * 10) + (x * 10);
+            x /= 10;
+        }
+        if(reversed > Integer.MAX_VALUE) {
+            return 0;
+        }
+        
+        return negative ? (int)(-1 * reversed) : (int)reversed;
+    }
+    
+    //move zero to the end of the array maintaing order
+    public static int[] moveZeros(int[] nums) {
+        int index = 0;
+        for(int i = 0; i < nums.length; i++) {
+            if(nums[i] != 0) {
+                nums[index++] = nums[i];
+            }
+        }
+        
+        for(int i = 0; i < nums.length; i++) {
+            nums[i] = 0;
+        }
+        return nums;
     }
     
     //counting using recursion
@@ -419,6 +463,21 @@ public class recursion {
 //        private static boolean isSubstring(String s1s1, String s2) {
 //            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 //        }
+        
+        //reverse a string
+        public static String ReverseString(String s) {
+            char[] string = s.toCharArray();
+            //let's flip from both end simultaniouslty and meet in the middle
+            int i = 0; 
+            int j = s.length() - 1;
+            
+            while(i < j) {
+                char temp = string[i];
+                string[i++] = string[j];
+                string[j--] = temp;
+            }
+            return new String(string);
+        }
       
 
     
