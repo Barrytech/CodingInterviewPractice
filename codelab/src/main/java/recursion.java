@@ -95,9 +95,9 @@ public class recursion {
             
             
             int[] movers = {4,0,9,0,0,9,8,};
-            System.out.println(moveZeros(movers));
             
-            System.out.println(reverseIntegers(2340));
+            
+            isIntPalindrome(2340);
     }
     
     //Here ends the main method
@@ -120,7 +120,25 @@ public class recursion {
         
     }
     
-    
+    //is int palindrome
+    public static boolean isIntPalindrome(int x) {
+        if(x == 0) {
+            return true;
+        } else if(x < 0 || x % 10 == 0) {
+            return false;
+        }
+        int reversed = 0;
+        while(x > reversed) {
+            int pop = x % 10;
+            x /=10;
+            reversed = (reversed * 10) + pop;
+        }
+        if(x == reversed || x == reversed / 10) {
+            return true;
+        } else{
+            return false;
+        }
+    }
  
     //reverse an integer
     public static int reverseIntegers(int x) {
@@ -142,7 +160,7 @@ public class recursion {
     }
     
     //move zero to the end of the array maintaing order
-    public static int[] moveZeros(int[] nums) {
+    public static void moveZeros(int[] nums) {
         int index = 0;
         for(int i = 0; i < nums.length; i++) {
             if(nums[i] != 0) {
@@ -153,7 +171,7 @@ public class recursion {
         for(int i = 0; i < nums.length; i++) {
             nums[i] = 0;
         }
-        return nums;
+
     }
     
     //counting using recursion
