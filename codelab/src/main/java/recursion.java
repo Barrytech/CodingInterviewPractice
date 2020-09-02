@@ -1,6 +1,8 @@
 
 import java.util.ArrayList;
 import java.lang.*;
+import java.util.HashMap;
+import java.util.PriorityQueue;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -496,7 +498,53 @@ public class recursion {
             }
             return new String(string);
         }
+        
+        //find celebrity: the method below needs a helper function called knwos; which would check if folks knows one another or not
+//        public static int findCelebrity(int n) {
+//            int candidate = 0;
+//            for(int i = 1; i < n; i++) {
+//                if(knows(candidate, i)) {
+//                    candidate = i;
+//                }
+//            }
+//            for(int i = 0; i < n; i++) {
+//                if(i != candidate && knows(candidate, i) || !knows(i, candidate)) {
+//                    return -1;
+//                }    
+//            }
+//            return candidate;
+//        }
       
+        ////check for a single number using hashmaps
+        public static int singleNumber(int[] nums) {
+            HashMap<Integer, Integer> theMap = new HashMap<Integer, Integer>();
+            for(int i : nums) {
+                theMap.put(i, theMap.getOrDefault(i, 0) + 1);
+            }
+            for(int key: theMap.keySet()) {
+                if(theMap.get(key) == 1) {
+                    return key;
+                }
+            }
+            
+            return -1;
+        }
+        
+        
+        //find largest element in an array using Heaps:
+        
+        public int findkthlargest(int[] nums, int k) {
+            PriorityQueue<Integer> minheap = new PriorityQueue<Integer>();
+            for(int i : nums) {
+                minheap.add(i);
+                if(minheap.size() < k) {
+                    minheap.remove();
+                }
+            }
+            return minheap.remove();
+        }
 
+        
+        
     
 }
