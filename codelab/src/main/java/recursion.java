@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.lang.*;
 import java.util.HashMap;
 import java.util.PriorityQueue;
+import java.util.Stack;
+import java.util.LinkedList;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -543,7 +545,25 @@ public class recursion {
             }
             return minheap.remove();
         }
-
+        
+        
+//        //reverse linkedList using stack
+//        public listNode reverseList(listNode head) {
+//            Stack<listNode> thelinkedList = new Stack<listNode>();
+//            while(head != null) {
+//                Stack.push(head);
+//                head = head.next;
+//            }
+//            lisNode dummy = new listNode(-1);
+//            head = dummy;
+//            while(!Stack.isEmpty) {
+//                listNode current = Stack.pop();
+//                head.next = new listNode(current.val);
+//                head = head.next;
+//            }
+//            return dummy.next;
+//        }
+ 
         
         
     
